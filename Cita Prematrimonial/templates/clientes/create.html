@@ -1,0 +1,56 @@
+{% include 'header.html' %}
+
+{% with messages= get_flashed_messages() %}
+
+    {% if messages %}
+        <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+
+    {% endif %}
+
+{% endwith %}
+
+<br><br>
+<form method="post" action="/store" enctype="multipart/form-data">
+    
+    <div class="card">
+        <div class="card-header">
+            Ingresar Nuevo Usuario
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Datos del Usuario</h5>
+            <p class="card-text">
+                <div class="form-group">
+                    <label for="txtnombre">Nombre</label>
+                    <input id="txtnombre" class="form-control" type="text" name="txtnombre">
+                </div>
+                <div class="form-group">
+                    <label for="txtcurp">CURP</label>
+                    <input id="txtcurp" class="form-control" type="text" name="txtcurp">
+                </div>
+                <div class="form-group">
+                    <label for="txtdireccion">Direccion</label>
+                    <input id="txtdireccion" class="form-control" type="text" name="txtdireccion">
+                </div>
+                <div class="form-group">
+                    <label for="txttelefono">Telefono</label>
+                    <input id="txttelefono" class="form-control" type="text" name="txttelefono">
+                </div>
+                <div class="form-group">
+                    <label for="txtcorreo">Correo</label>
+                    <input id="txtcorreo" class="form-control" type="text" name="txtcorreo">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Agregar">
+                    <a  href="{{ url_for('index') }}" class="btn btn-primary">Regresar</a>
+                </div>
+            </p>
+            
+        </div>
+    </div>
+
+</form>
+{% include 'footer.html' %}

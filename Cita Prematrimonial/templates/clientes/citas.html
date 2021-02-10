@@ -1,0 +1,45 @@
+{% include 'header.html' %}
+    <br>
+    <h3>Citas Programadas Registro Civil</h3> 
+
+    
+    
+    <br><br>
+    <table class="table ">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id_cita</th>
+                <th>Fecha</th>
+                <th>Id_cliente</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Hora</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <!--cliente es una variable que se crea aqui, y clientess es el que viene de app-->
+            {% for cita in citas %}
+            <tr>
+                <td>{{cita[0]}}</td>
+                <td>{{cita[1]}}</td>
+                <td>{{cita[2]}}</td>
+                <td>{{cita[3]}}</td>
+                <td>{{cita[4]}}</td>
+                <td>{{cita[5]}}</td>
+                <td>
+                    <a class="btn btn-outline-info" href="/edit2/{{cita[0]}}">Confirmar Asistencia</a>  
+                </td>
+                <td>
+                    <a onclick="return confirm('¿Desea Eliminar la Cita?')" class="btn btn-outline-danger" href="/destroy1/{{cita[0]}}">Eliminar</a>
+                </td>
+            </tr>   
+            {% endfor %}
+            
+
+        </tbody>
+    </table>
+
+{% include 'footer.html' %}
