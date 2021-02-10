@@ -1,0 +1,51 @@
+{% include 'header.html' %}
+    <br>
+    <h3>Base de Datos Registro Civil</h3> 
+
+    
+    <a  href="{{ url_for('create') }}" class="btn btn-success">Nuevo Registro</a>
+    
+    
+    <br><br>
+    <table class="table ">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id_cliente</th>
+                <th>Nombre</th>
+                <th>CURP</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+                <th></th>
+                <th></th>
+                <th>Citas</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <!--cliente es una variable que se crea aqui, y clientess es el que viene de app-->
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{cliente[0]}}</td>
+                <td>{{cliente[1]}}</td>
+                <td>{{cliente[2]}}</td>
+                <td>{{cliente[3]}}</td>
+                <td>{{cliente[4]}}</td>
+                <td>{{cliente[5]}}</td>
+                <td>
+                  <a class="btn btn-outline-info" href="/edit/{{cliente[0]}}">Editar</a>  
+                </td>
+                <td>
+                    <a onclick="return confirm('¿Desea Borrar este Registro?')" class="btn btn-outline-danger" href="/destroy/{{cliente[0]}}">Eliminar</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-info" href="/edit1/{{cliente[0]}}">Agendar Cita</a>  
+              </td>
+            </tr>   
+            {% endfor %}
+            
+
+        </tbody>
+    </table>
+
+{% include 'footer.html' %}

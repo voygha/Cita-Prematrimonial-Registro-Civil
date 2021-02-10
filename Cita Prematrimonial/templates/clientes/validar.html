@@ -1,0 +1,70 @@
+{% include 'header.html' %}
+{% for citas in citas %}
+{% with messages= get_flashed_messages() %}
+
+    {% if messages %}
+        <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+
+    {% endif %}
+
+{% endwith %}
+
+<br><br>
+<form method="post" action="/store2" enctype="multipart/form-data">
+    
+    <div class="card">
+        <div class="card-header">
+            Confirmar Revision de Documentos
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Datos de la Cita</h5>
+            <p class="card-text">
+                <div class="form-group">
+                    <input id="txtid_cita" class="form-control" value="{{citas[0]}}" type="hidden" name="txtid_cita">
+                </div>
+
+
+                <div  class="form-group">
+                    <label for="txtfecha">Fecha</label>
+                    <input id="txtfecha" class="form-control" value="{{citas[1]}}" type="text" name="txtfecha">
+                </div>
+
+                <div class="form-group">
+                    <input id="txtid_cliente" class="form-control" value="{{citas[2]}}" type="hidden" name="txtid_cliente">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtnombre">Nombre</label>
+                    <input id="txtnombre" class="form-control" value="{{citas[3]}}" type="text" name="txtnombre">
+                </div>
+                
+                
+                
+                <div class="form-group">
+                    <label for="txtcorreo">Correo</label>
+                    <input id="txtcorreo" value="{{citas[4]}}" class="form-control" type="text" name="txtcorreo">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="txthora">Hora</label>
+                    <input id="txthora" value="{{citas[5]}}" class="form-control" type="text" name="txthora">
+                </div>
+
+                
+                <br><br>
+                <div class="form-group">
+                    <input onclick="return confirm('¿Desea Confirmar la Revision de Documentos? \n\n Recuerde que esto se guardara en el Registro Historico y no se Podra Modificar')" type="submit" class="btn btn-success" value="Confirmar">
+                    <a  href="{{ url_for('index') }}" class="btn btn-primary">Regresar</a>
+                </div>
+            </p>
+            
+        </div>
+    </div>
+</form>
+{% endfor %}
+{% include 'footer.html' %}

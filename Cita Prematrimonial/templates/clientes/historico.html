@@ -1,0 +1,36 @@
+{% include 'header.html' %}
+    <br>
+    <h3>Registro Historico de Citas Programadas Registro Civil</h3> 
+
+    
+    
+    <br><br>
+    <table class="table ">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id_cita</th>
+                <th>Fecha</th>
+                <th>Id_cliente</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <!--cliente es una variable que se crea aqui, y clientess es el que viene de app-->
+            {% for registro in registros %}
+            <tr>
+                <td>{{registro[0]}}</td>
+                <td>{{registro[1]}}</td>
+                <td>{{registro[2]}}</td>
+                <td>{{registro[3]}}</td>
+                <td>{{registro[4]}}</td>
+                <td>{{registro[5]}}</td>
+            {% endfor %}
+            
+
+        </tbody>
+    </table>
+
+{% include 'footer.html' %}
